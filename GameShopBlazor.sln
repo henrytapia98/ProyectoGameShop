@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31911.196
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GameShopBlazor", "GameShopBlazor\GameShopBlazor.csproj", "{E33FDD3A-6013-4528-8F9E-E15C08B384B6}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GSDataAccess", "GSDataAccess\GSDataAccess.csproj", "{1D58DDF6-172A-4CBF-AEDB-E10E4572C22D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E33FDD3A-6013-4528-8F9E-E15C08B384B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E33FDD3A-6013-4528-8F9E-E15C08B384B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E33FDD3A-6013-4528-8F9E-E15C08B384B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E33FDD3A-6013-4528-8F9E-E15C08B384B6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1D58DDF6-172A-4CBF-AEDB-E10E4572C22D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D58DDF6-172A-4CBF-AEDB-E10E4572C22D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D58DDF6-172A-4CBF-AEDB-E10E4572C22D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D58DDF6-172A-4CBF-AEDB-E10E4572C22D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E0F1C468-76BE-4523-8721-33416C7F1DB5}
+	EndGlobalSection
+EndGlobal

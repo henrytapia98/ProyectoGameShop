@@ -1,0 +1,129 @@
+﻿@page "/Data/Sales"
+@using GSDataAccess
+@using GSDataAccess.Models
+@using GameShopBlazor.Models
+
+@inject ISalesData _db
+
+<h1>Sales</h1>
+
+<BSForm Model="@newSales" OnValidSubmit="@InsertSales" style="width: 700px;">
+    <BSFormGroup Class="mb-2 mr-sm-2 mb-sm-0">
+        <BSLabel For="exampleEmail" Class="mr-sm-2">First Name</BSLabel>
+        <BSBasicInput InputType="InputType.Text" Name="first_nanme" id="first_name"
+                      PlaceHolder="First Name" @bind-Value="newSales.First_Name"></BSBasicInput>
+    </BSFormGroup>
+    <BSFormGroup Class="mb-2 mr-sm-2 mb-sm-0">
+        <BSLabel For="exampleEmail" Class="mr-sm-2">Product Name</BSLabel>
+        <BSBasicInput InputType="InputType.Text" Name="last_name" id="last_name"
+                      PlaceHolder="Last Name" @bind-Value="newSales.Last_Name"></BSBasicInput>
+    </BSFormGroup>
+    <BSFormGroup Class="mb-2 mr-sm-2 mb-sm-0">
+        <BSLabel For="exampleEmail" Class="mr-sm-2">Product Name</BSLabel>
+        <BSBasicInput InputType="InputType.Text" Name="product_name" id="product_name"
+                      PlaceHolder="Product Name" @bind-Value="newSales.Product_Name"></BSBasicInput>
+    </BSFormGroup>
+    <BSFormGroup Class="mb-2 mr-sm-2 mb-sm-0">
+        <BSLabel For="exampleEmail" Class="mr-sm-2">Price</BSLabel>
+        <BSBasicInput InputType="InputType.Number" Name="price" id="price"
+                      PlaceHolder="Price" @bind-Value="newSales.Price"></BSBasicInput>
+    </BSFormGroup>
+    <BSFormGroup Class="mb-2 mr-sm-2 mb-sm-0">
+        <BSLabel For="exampleEmail" Class="mr-sm-2">Quantity</BSLabel>
+        <BSBasicInput InputType="InputType.Number" Name="quantity" id="quantity"
+                      PlaceHolder="Quantity" @bind-Value="newSales.Quantity"></BSBasicInput>
+    </BSFormGroup>
+    <BSFormGroup Class="mb-2 mr-sm-2 mb-sm-0">
+        <BSLabel For="exampleEmail" Class="mr-sm-2">Product Category</BSLabel>
+        <BSBasicInput InputType="InputType.Select" Name="product_category" id="product_category"
+                      PlaceHolder="Product Category" @bind-Value="newSales.Product_Category">
+            <option>Consola</option>
+            <option>Juego</option>
+            <option>Accesorio</option>
+        </BSBasicInput>
+    </BSFormGroup>
+    <BSFormGroup Class="mb-2 mr-sm-2 mb-sm-0">
+        <BSLabel For="exampleEmail" Class="mr-sm-2">Brand Name</BSLabel>
+        <BSBasicInput InputType="InputType.Text" Name="brand_name" id="brand_name"
+                      PlaceHolder="Brand_Name" @bind-Value="newSales.Brand_Name"></BSBasicInput>
+    </BSFormGroup>
+    <BSFormGroup Class="mb-2 mr-sm-2 mb-sm-0">
+        <BSLabel For="exampleEmail" Class="mr-sm-2">Game Category</BSLabel>
+        <BSBasicInput InputType="InputType.Select" Name="game_category" id="game_category"
+                      PlaceHolder="Game Category" @bind-Value="newSales.Game_Category">
+            <option>Terror</option>
+            <option>Fantasia</option>
+            <option>Lucha</option>
+            <option>Disparos</option>
+            <option>Estrategia</option>
+            <option>Simulacion</option>
+            <option>Deporte</option>
+            <option>Aventura</option>
+            <option>Rol</option>
+            <option>Educacion</option>
+        </BSBasicInput>
+    </BSFormGroup>
+    <br />
+    <button type="submit">Guardar</button>
+</BSForm>
+
+<br />
+
+
+<h4>Sales</h4>
+@if (sales is null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+
+{
+
+    <RadzenGrid AllowPaging="true" AllowFiltering="true" FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" PageSize="10" AllowSorting="true"
+               Data="@sales" TItem="SalesModel" ColumnWidth="150px">
+        <Columns>
+            <RadzenGridColumn TItem="SalesModel" Property="First_Name" Title="First Name"></RadzenGridColumn>
+            <RadzenGridColumn TItem="SalesModel" Property="Last_Name" Title="Last Name"></RadzenGridColumn>
+            <RadzenGridColumn TItem="SalesModel" Property="Product_Name" Title="Product Name"></RadzenGridColumn>
+            <RadzenGridColumn TItem="SalesModel" Property="Price" Title="Price"></RadzenGridColumn>
+            <RadzenGridColumn TItem="SalesModel" Property="Quantity" Title="Quantity"></RadzenGridColumn>
+            <RadzenGridColumn TItem="SalesModel" Property="Product_Category" Title="Product Category"></RadzenGridColumn>
+            <RadzenGridColumn TItem="SalesModel" Property="Brand_Name" Title="Brand Name"></RadzenGridColumn>
+            <RadzenGridColumn TItem="SalesModel" Property="Game_Category" Title="Game Category"></RadzenGridColumn>
+        </Columns>
+    </RadzenGrid>
+}
+
+@code {
+    private List<SalesModel> sales;
+    private DisplaySalesModel newSales = new DisplaySalesModel();
+
+
+    protected override async Task OnInitializedAsync()
+    {
+        sales = await _db.GetSales();
+    }
+
+    private async Task InsertSales()
+    {
+        SalesModel p = new SalesModel
+        {
+            First_Name = newSales.First_Name,
+            Last_Name = newSales.Last_Name,
+            Product_Name = newSales.Product_Name,
+            Price = newSales.Price,
+            Quantity = newSales.Quantity,
+            Product_Category = newSales.Product_Category,
+            Brand_Name = newSales.Brand_Name,
+            Game_Category = newSales.Game_Category
+        };
+
+        await _db.InsertSales(p);
+
+        sales.Add(p);
+
+        newSales = new DisplaySalesModel();
+    }
+
+}
+

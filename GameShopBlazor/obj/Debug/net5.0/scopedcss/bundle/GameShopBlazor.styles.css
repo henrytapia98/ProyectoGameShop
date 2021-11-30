@@ -1,0 +1,134 @@
+/* _content/GameShopBlazor/Shared/MainLayout.razor.rz.scp.css */
+.page[b-gs0csnr4xo] {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.main[b-gs0csnr4xo] {
+    flex: 1;
+}
+
+.sidebar[b-gs0csnr4xo] {
+    background-image: linear-gradient(180deg, rgb(5, 39, 103) 0%, #3a0647 70%);
+}
+
+.top-row[b-gs0csnr4xo] {
+    background-color: #f7f7f7;
+    border-bottom: 1px solid #d6d5d5;
+    justify-content: flex-end;
+    height: 3.5rem;
+    display: flex;
+    align-items: center;
+}
+
+    .top-row[b-gs0csnr4xo]  a, .top-row .btn-link[b-gs0csnr4xo] {
+        white-space: nowrap;
+        margin-left: 1.5rem;
+    }
+
+    .top-row a:first-child[b-gs0csnr4xo] {
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+@media (max-width: 640.98px) {
+    .top-row:not(.auth)[b-gs0csnr4xo] {
+        display: none;
+    }
+
+    .top-row.auth[b-gs0csnr4xo] {
+        justify-content: space-between;
+    }
+
+    .top-row a[b-gs0csnr4xo], .top-row .btn-link[b-gs0csnr4xo] {
+        margin-left: 0;
+    }
+}
+
+@media (min-width: 641px) {
+    .page[b-gs0csnr4xo] {
+        flex-direction: row;
+    }
+
+    .sidebar[b-gs0csnr4xo] {
+        width: 250px;
+        height: 100vh;
+        position: sticky;
+        top: 0;
+    }
+
+    .top-row[b-gs0csnr4xo] {
+        position: sticky;
+        top: 0;
+        z-index: 1;
+    }
+
+    .main > div[b-gs0csnr4xo] {
+        padding-left: 2rem !important;
+        padding-right: 1.5rem !important;
+    }
+}
+/* _content/GameShopBlazor/Shared/NavMenu.razor.rz.scp.css */
+.navbar-toggler[b-sz3fwtm8ib] {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.top-row[b-sz3fwtm8ib] {
+    height: 3.5rem;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.navbar-brand[b-sz3fwtm8ib] {
+    font-size: 1.1rem;
+}
+
+.oi[b-sz3fwtm8ib] {
+    width: 2rem;
+    font-size: 1.1rem;
+    vertical-align: text-top;
+    top: -2px;
+}
+
+.nav-item[b-sz3fwtm8ib] {
+    font-size: 0.9rem;
+    padding-bottom: 0.5rem;
+}
+
+    .nav-item:first-of-type[b-sz3fwtm8ib] {
+        padding-top: 1rem;
+    }
+
+    .nav-item:last-of-type[b-sz3fwtm8ib] {
+        padding-bottom: 1rem;
+    }
+
+    .nav-item[b-sz3fwtm8ib]  a {
+        color: #d7d7d7;
+        border-radius: 4px;
+        height: 3rem;
+        display: flex;
+        align-items: center;
+        line-height: 3rem;
+    }
+
+.nav-item[b-sz3fwtm8ib]  a.active {
+    background-color: rgba(255,255,255,0.25);
+    color: white;
+}
+
+.nav-item[b-sz3fwtm8ib]  a:hover {
+    background-color: rgba(255,255,255,0.1);
+    color: white;
+}
+
+@media (min-width: 641px) {
+    .navbar-toggler[b-sz3fwtm8ib] {
+        display: none;
+    }
+
+    .collapse[b-sz3fwtm8ib] {
+        /* Never collapse the sidebar for wide screens */
+        display: block;
+    }
+}

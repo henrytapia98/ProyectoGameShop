@@ -1,0 +1,103 @@
+﻿@page "/Data/People"
+@using GSDataAccess
+@using GSDataAccess.Models
+@using GameShopBlazor.Models
+
+@inject IPeopleData _db
+
+
+<h1 >Productos</h1>
+
+<h4>Insertar un nuevo Producto</h4>
+<BSForm Model="@newPerson" OnValidSubmit="@InsertPerson">
+    <BSFormGroup Class="mb-2 mr-sm-2 mb-sm-0">
+        <BSLabel For="exampleEmail" Class="mr-sm-2">Product Name</BSLabel>
+        <BSBasicInput InputType="InputType.Text" Name="product_name" Id="product_name" PlaceHolder="Product Name" @bind-Value="newPerson.Product_Name"> </BSBasicInput>
+    </BSFormGroup>
+    <BSFormGroup Class="mb-2 mr-sm-2 mb-sm-0">
+        <BSLabel For="examplePassword" class="mr-sm-2">Price</BSLabel>
+        <BSBasicInput InputType="InputType.Number" Name="price" Id="price" @bind-Value="newPerson.Price"></BSBasicInput>
+    </BSFormGroup>
+    <BSFormGroup>
+        <BSLabel For="exampleFormControlSelect1">Game Category</BSLabel>
+        <BSBasicInput Id="game_category" InputType="InputType.Select" @bind-Value="newPerson.Game_Category">
+            <option>Terror</option>
+            <option>Fantasia</option>
+            <option>Lucha</option>
+            <option>Disparos</option>
+            <option>Estrategia</option>
+            <option>Simulacion</option>
+            <option>Deporte</option>
+            <option>Aventura</option>
+            <option>Rol</option>
+            <option>Educacion</option>
+        </BSBasicInput>
+    </BSFormGroup>
+    <BSFormGroup Class="mb-2 mr-sm-2 mb-sm-0">
+        <BSLabel For="examplePassword" class="mr-sm-2">Brand Name</BSLabel>
+        <BSBasicInput InputType="InputType.Text" Name="brand_name" Id="brand_name" PlaceHolder="Brand Name" @bind-Value="newPerson.Brand_Name"></BSBasicInput>
+    </BSFormGroup>
+    <BSDropdown>
+        <BSFormGroup>
+            <BSLabel For="exampleFormControlSelect1">Product Category</BSLabel>
+            <BSBasicInput Id="product_category" InputType="InputType.Select" @bind-Value="newPerson.Product_Category">
+                <option>Consola</option>
+                <option>Juego</option>
+                <option>Accesorio</option>
+            </BSBasicInput>
+        </BSFormGroup>
+    </BSDropdown>
+    <button type="submit">Guardar</button>
+</BSForm>
+<br />
+
+
+<h4>Productos</h4>
+@if (people is null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+
+{
+    <RadzenGrid AllowPaging="true" AllowFiltering="true" FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" PageSize="10" AllowSorting="true"
+                Data="@people" TItem="PersonModel" ColumnWidth="150px">
+
+        <Columns>
+            <RadzenGridColumn TItem="PersonModel" Property="Product_Name" Title="Product Name"></RadzenGridColumn>
+            <RadzenGridColumn TItem="PersonModel" Property="Price" Title="Price"></RadzenGridColumn>
+            <RadzenGridColumn TItem="PersonModel" Property="Game_Category" Title="Game Category"></RadzenGridColumn>
+            <RadzenGridColumn TItem="PersonModel" Property="Brand_Name" Title="Brand Name"></RadzenGridColumn>
+            <RadzenGridColumn TItem="PersonModel" Property="Product_Category" Title="Product Category"></RadzenGridColumn>
+        </Columns>
+    </RadzenGrid>
+}
+
+@code {
+    private List<PersonModel> people;
+    private DisplayPersonModel newPerson = new DisplayPersonModel(); 
+
+    protected override async Task OnInitializedAsync()
+    {
+        people = await _db.GetPeople();
+    }
+
+    private async Task InsertPerson()
+    {
+        PersonModel p = new PersonModel
+        {
+            Product_Name = newPerson.Product_Name,
+            Price = newPerson.Price,
+            Game_Category = newPerson.Game_Category,
+            Brand_Name = newPerson.Brand_Name,
+            Product_Category = newPerson.Product_Category
+        };
+
+        await _db.InsertPerson(p);
+
+        people.Add(p);
+
+        newPerson = new DisplayPersonModel();
+    }
+
+}

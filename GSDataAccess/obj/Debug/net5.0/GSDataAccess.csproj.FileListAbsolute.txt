@@ -1,0 +1,12 @@
+C:\Users\HACHE\source\repos\GameShopBlazor\GSDataAccess\bin\Debug\net5.0\GSDataAccess.deps.json
+C:\Users\HACHE\source\repos\GameShopBlazor\GSDataAccess\bin\Debug\net5.0\GSDataAccess.dll
+C:\Users\HACHE\source\repos\GameShopBlazor\GSDataAccess\bin\Debug\net5.0\ref\GSDataAccess.dll
+C:\Users\HACHE\source\repos\GameShopBlazor\GSDataAccess\bin\Debug\net5.0\GSDataAccess.pdb
+C:\Users\HACHE\source\repos\GameShopBlazor\GSDataAccess\obj\Debug\net5.0\GSDataAccess.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\HACHE\source\repos\GameShopBlazor\GSDataAccess\obj\Debug\net5.0\GSDataAccess.AssemblyInfoInputs.cache
+C:\Users\HACHE\source\repos\GameShopBlazor\GSDataAccess\obj\Debug\net5.0\GSDataAccess.AssemblyInfo.cs
+C:\Users\HACHE\source\repos\GameShopBlazor\GSDataAccess\obj\Debug\net5.0\GSDataAccess.csproj.CoreCompileInputs.cache
+C:\Users\HACHE\source\repos\GameShopBlazor\GSDataAccess\obj\Debug\net5.0\GSDataAccess.dll
+C:\Users\HACHE\source\repos\GameShopBlazor\GSDataAccess\obj\Debug\net5.0\ref\GSDataAccess.dll
+C:\Users\HACHE\source\repos\GameShopBlazor\GSDataAccess\obj\Debug\net5.0\GSDataAccess.pdb
+C:\Users\HACHE\source\repos\GameShopBlazor\GSDataAccess\obj\Debug\net5.0\GSDataAccess.csproj.AssemblyReference.cache

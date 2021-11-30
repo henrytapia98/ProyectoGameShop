@@ -1,0 +1,126 @@
+﻿@page "/"
+
+<h1 style="text-align:center">GameShop</h1>
+
+<h2 style="text-align:center">Los mejores productos Gamer</h2>
+
+<BSCarousel NumberOfItems="@items.Count">
+    <BSCarouselIndicators ActiveIndexChangedEvent="@indexChanged"></BSCarouselIndicators>
+    <div class="carousel-inner">
+        @for (int i = 0; i < items.Count; i++)
+        {
+            <BSCarouselItem src="@items[i].Source" alt="@items[i].Alt" style="height:500px"></BSCarouselItem>
+        }
+    </div>
+    <BSCarouselControl CarouselDirection="CarouselDirection.Previous"></BSCarouselControl>
+    <BSCarouselControl CarouselDirection="CarouselDirection.Next"></BSCarouselControl>
+</BSCarousel>
+<br />
+<BSCard CardType="CardType.Deck">
+    <BSCard>
+        <BSCard CardType="CardType.Image" VerticalAlignment="VerticalAlignment.Top" src="../css/images/imagep1.jpg" alt="256x180" />
+        <BSCard CardType="CardType.Body">
+            <BSCard CardType="CardType.Title">Sobre Nosotros</BSCard>
+            <BSCard CardType="CardType.Subtitle">Conocenos un poco!</BSCard>
+            <BSCard CardType="CardType.Text">Somos una tienda Gamer especializada con más de 8 años de trayectoria en el mercado, destacada por ofrecer a nuestros Gamers la más completa asesoría. En nuestra tienda podrás encontrar una amplia oferta de productos, entre consolas, juegos, accesorios y tecnología en general, con los más altos estándares de calidad y un excelente servicio al cliente. ¡Nos encanta darte gusto!</BSCard>
+            <BSCard CardType="CardType.Text"><small class="text-muted">Last updated 3 mins ago</small></BSCard>
+        </BSCard>
+    </BSCard>
+    <BSCard>
+        <BSCard CardType="CardType.Image" VerticalAlignment="VerticalAlignment.Top" src="../css/images/imagep2.jpg" alt="256x180" />
+        <BSCard CardType="CardType.Body">
+            <BSCard CardType="CardType.Title">Mision</BSCard>
+            <BSCard CardType="CardType.Subtitle">Siempre de tu lado!</BSCard>
+            <BSCard CardType="CardType.Text">Nuestra misión es ofrecer una amplia variedad de productos especializados para satisfacer todas las necesidades y deseos de nuestros Gamers, brindando la mejor experiencia de compra, con excelente servicio y cultura.</BSCard>
+            <BSCard CardType="CardType.Text"><small class="text-muted">Last updated 3 mins ago</small></BSCard>
+        </BSCard>
+    </BSCard>
+    <BSCard>
+        <BSCard CardType="CardType.Image" VerticalAlignment="VerticalAlignment.Top" src="../css/images/imagep3.jpg" alt="256x180" />
+        <BSCard CardType="CardType.Body">
+            <BSCard CardType="CardType.Title">Vision</BSCard>
+            <BSCard CardType="CardType.Subtitle">Siempre avanzando!</BSCard>
+            <BSCard CardType="CardType.Text">Ser la tienda líder en la ciudad para el año 2020 y posicionarnos en el mercado nacional para el año 2024, apoyados en un proceso de mejora continua y en una excelente cultura de servicio al cliente, con ética, responsabilidad, honestidad e integridad.</BSCard>
+            <BSCard CardType="CardType.Text"><small class="text-muted">Last updated 3 mins ago</small></BSCard>
+        </BSCard>
+    </BSCard>
+</BSCard>
+<br />
+<BSRow>
+    <BSTabGroup>
+        <BSCol SM="3">
+            <BSTabList IsPills="true" IsList="true" IsVertical="true">
+                <BSTab>
+                    <BSTabLabel>Como LLegar?<i class="fas fa-map-marker-alt" style="margin-left: 6px;"></i></BSTabLabel>
+                    <BSTabContent>
+                        1 Calle Sur-Este, Masaya <br />
+                        Horas:<br />
+                        lunes	9:00–17:00<br />
+                        martes	9:00–17:00<br />
+                        miércoles	9:00–17:00<br />
+                        jueves	9:00–17:00<br />
+                        viernes	9:00–17:00<br />
+                        sábado	10:00–14:30<br />
+                        domingo	Cerrado
+                    </BSTabContent>
+                </BSTab>
+                <BSTab>
+                    <BSTabLabel>Contact <i class="fas fa-id-card" style="margin-left: 6px;"></i></BSTabLabel>
+                    <BSTabContent>Telefono: 7677 1947 <br />Correo Electronico: gameshoptienda@gmail.com<br />Fax: 24262578</BSTabContent>
+                </BSTab>
+                <BSTab>
+                    <BSTabLabel>Copyright <i class="fas fa-copyright" style="margin-left: 6px;"></i></BSTabLabel>
+                    <BSTabContent>Copyright © 2021 GS GAMESHOP® By Tapia Agencia</BSTabContent>
+                </BSTab>
+            </BSTabList>
+        </BSCol>
+        <BSCol SM="9">
+            <BSTabSelectedContent></BSTabSelectedContent>
+        </BSCol>
+    </BSTabGroup>
+</BSRow>
+
+@code {
+
+    IList<Item> items = new List<Item>
+{
+        new Item {
+            Source = "../css/images/image1.jpg",
+            Alt ="First Slide",
+            Caption = "Slide 1",
+            Header = "Slide 1 Header"
+        },
+        new Item {
+            Source = "../css/images/image2.jpg",
+            Alt ="Second Slide",
+            Caption = "Slide 2",
+            Header = "Slide 2 Header"
+        },
+        new Item {
+            Source = "../css/images/image3.jpg",
+            Alt ="Third Slide",
+            Caption = "Slide 3",
+            Header = "Slide 3 Header"
+        },
+        new Item {
+            Source = "../css/images/image4.jpg",
+            Alt ="Fourth Slide",
+            Caption = "Slide 4",
+            Header = "Slide 4 Header"
+        }
+    };
+
+    class Item
+    {
+        public string Source { get; set; }
+        public string Alt { get; set; }
+        public string Caption { get; set; }
+        public string Header { get; set; }
+    }
+
+    private void indexChanged(int index)
+    {
+        Console.WriteLine("Index Changed: " + index);
+    }
+}
+

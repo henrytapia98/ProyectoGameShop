@@ -1,0 +1,52 @@
+﻿@page "/masterDetailsGrid"
+@using GameShopBlazor.Data
+@inject OrderService orderService
+@using Radzen.Blazor
+<h3>Maestro Detalle</h3>
+
+@if (orders == null)
+{
+    <p>Loading...</p>
+}
+else 
+{
+    <RadzenGrid Data="@orders" TItem="Order" AllowFiltering="true" FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" AllowPaging="true" PageSize="4"
+                RowSelect="@(args => order=args)">
+        <Columns>
+            <RadzenGridColumn TItem="Order" Property="OrderID" Title="Order ID"></RadzenGridColumn>
+            <RadzenGridColumn TItem="Order" Property="CustomerName" Title="Customer Name"></RadzenGridColumn>
+            <RadzenGridColumn TItem="Order" Property="OrderDate" Title="Order Date">
+                <Template Context="data">
+                    @string.Format("{0:d}", data.OrderDate)
+                </Template>
+            </RadzenGridColumn>
+        </Columns>
+    </RadzenGrid>
+
+    <RadzenTabs>
+        <Tabs>
+            <RadzenTabsItem Text="Order Details">
+                <RadzenGrid AllowFiltering="true" AllowPaging="true" AllowSorting="true" Data="@order.OrderDetails" TItem="OrderDetails">
+                    <Columns>
+                        <RadzenGridColumn TItem="OrderDetails" Property="ProductID" Title="Product ID"></RadzenGridColumn>
+                        <RadzenGridColumn TItem="OrderDetails" Property="ProductName" Title="Product ID"></RadzenGridColumn>
+                        <RadzenGridColumn TItem="OrderDetails" Property="ProdQty" Title="Quantity"></RadzenGridColumn>
+                        <RadzenGridColumn TItem="OrderDetails" Property="Price" Title="Price"></RadzenGridColumn>
+                    </Columns>
+                </RadzenGrid>
+            </RadzenTabsItem>
+        </Tabs>
+    </RadzenTabs>
+}
+
+@code {
+
+    Order order = new Order();
+    IEnumerable<Order> orders;
+
+    protected override async Task OnInitializedAsync()
+    {
+        orders = await Task.Run(() => orderService.OrderList());
+    }
+
+}
